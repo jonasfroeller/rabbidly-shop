@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
-import { ShopItemComponent } from '../shop-item/shop-item.component';
-import { ShopItemServiceService } from '../shop-item-service.service';
+import {Component} from '@angular/core';
+import {ShopItemComponent} from '../shop-item/shop-item.component';
+import {ShopItemServiceService} from '../shop-item-service.service';
 
 @Component({
   selector: 'app-shop-items-wrapper',
@@ -12,18 +12,19 @@ import { ShopItemServiceService } from '../shop-item-service.service';
 export class ShopItemsWrapperComponent {
   products: any;
 
-  constructor(private shopItemService: ShopItemServiceService) {}
+  constructor(private shopItemService: ShopItemServiceService) {
+  }
 
   async ngOnInit() {
-    this.fetchProducts();
+    await this.fetchProducts();
   }
 
   async fetchProducts(): Promise<void> {
     try {
-      const response = await this.shopItemService.getProducts();
+      const response = await this.shopItemService.getAllProducts();
       this.products = response.products.edges.map((edge: any) => edge.node);
 
-      console.log('Products:', this.products);
+      // console.log('Products:', this.products);
     } catch (error) {
       console.error('Error fetching products:', error);
     }

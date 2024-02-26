@@ -1,15 +1,12 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import {Component} from '@angular/core';
+import {RouterOutlet} from '@angular/router';
 
 // Layout Components
-import { HeaderComponent } from './header/header.component';
-import { PathComponent } from './path/path.component';
-import { HeroComponent } from './hero/hero.component';
-import { NavigationComponent } from './navigation/navigation.component';
-import { FooterComponent } from './footer/footer.component';
-
-// Shop Components
-import { ShopItemsWrapperComponent } from './shop-items-wrapper/shop-items-wrapper.component';
+import {HeaderComponent} from './header/header.component';
+import {PathComponent} from './path/path.component';
+import {HeroComponent} from './hero/hero.component';
+import {NavigationComponent} from './navigation/navigation.component';
+import {FooterComponent} from './footer/footer.component';
 
 @Component({
   selector: 'app-root',
@@ -20,8 +17,7 @@ import { ShopItemsWrapperComponent } from './shop-items-wrapper/shop-items-wrapp
     PathComponent,
     HeroComponent,
     NavigationComponent,
-    FooterComponent,
-    ShopItemsWrapperComponent
+    FooterComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'

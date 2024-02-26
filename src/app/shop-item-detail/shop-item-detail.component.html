@@ -1,0 +1,14 @@
+<div *ngIf="this.product; else productIsUndefinedOrNull" class="container mx-auto flex justify-center px-4 my-8">
+  <app-shop-item
+    [currency]="product?.variants?.edges[0]?.node?.price?.currencyCode"
+    [description]="product?.description"
+    [id]="product?.id"
+    [name]="product?.title"
+    [pictureUrl]="product?.featuredImage?.url"
+    [price]="product?.variants?.edges[0]?.node?.price?.amount">
+  </app-shop-item>
+</div>
+
+<ng-template #productIsUndefinedOrNull class="container">
+  <h1 class="text-center">Des Produkt gibt's ned, goi :).</h1>
+</ng-template>

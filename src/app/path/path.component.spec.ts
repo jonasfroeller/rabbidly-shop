@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { PathComponent } from './path.component';
+import {PathComponent} from './path.component';
 
 describe('PathComponent', () => {
   let component: PathComponent;
@@ -10,8 +10,8 @@ describe('PathComponent', () => {
     await TestBed.configureTestingModule({
       imports: [PathComponent]
     })
-    .compileComponents();
-    
+      .compileComponents();
+
     fixture = TestBed.createComponent(PathComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

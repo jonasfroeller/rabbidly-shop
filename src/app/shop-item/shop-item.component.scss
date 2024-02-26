@@ -1,0 +1,7 @@
+.card {
+  &:hover {
+    .card__cover img {
+      filter: brightness(95%);
+    }
+  }
+}

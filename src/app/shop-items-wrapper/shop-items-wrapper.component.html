@@ -1,11 +1,18 @@
 <div class="m-4">
-    <div class="grid grid-cols-4 gap-4">
-        @for (product of products; track product?.title) {
-            <app-shop-item [name]="product?.title" [description]="product?.description" [price]="product?.variants?.edges[0]?.node?.price?.amount" [currency]="product?.variants?.edges[0]?.node?.price?.currencyCode" [pictureUrl]="product?.featuredImage?.url"></app-shop-item>
-        } @empty {
-            <div class="spinner text-gray-200" role="status">
-                <span class="sr-only">Loading...</span>
-            </div>
-        }
-    </div>
+  <div class="grid grid-cols-4 gap-4">
+    @for (product of products; track product?.title) {
+      <app-shop-item
+        [id]="product?.id"
+        [name]="product?.title"
+        [description]="product?.description"
+        [price]="product?.variants?.edges[0]?.node?.price?.amount"
+        [currency]="product?.variants?.edges[0]?.node?.price?.currencyCode"
+        [pictureUrl]="product?.featuredImage?.url">
+      </app-shop-item>
+    } @empty {
+      <div class="spinner text-gray-200" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    }
+  </div>
 </div>

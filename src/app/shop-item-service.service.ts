@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { request, gql } from "graphql-request";
+import {Injectable} from '@angular/core';
+import {gql, request} from "graphql-request";
 
 @Injectable({
   providedIn: 'root'
@@ -34,14 +34,34 @@ export class ShopItemServiceService {
     }
   `;
 
-  constructor() {}
+  constructor() {
+  }
 
-  async getProducts(): Promise<any> {
+  async getAllProducts(): Promise<any> {
     try {
-      const response = await request(this.API_URL, this.API_QUERY_20);
-      return response;
+      return await request(this.API_URL, this.API_QUERY_20);
     } catch (error) {
       console.error('Error fetching products:', error);
     }
   }
+
+  async getProductByFullId(full_id: string): Promise<any> {
+    return await request(this.API_URL, this.API_QUERY_1(full_id));
+  }
+
+  private API_QUERY_1 = (full_id: string) => {
+    return gql`
+    {
+      product(id: "${full_id}") {
+        id
+        title
+        description
+        featuredImage {
+          id
+          url
+        }
+      }
+    }
+  `;
+  };
 }

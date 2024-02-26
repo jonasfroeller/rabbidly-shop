@@ -1,11 +1,20 @@
-<div class="relative overflow-auto h-[48rem] card">
-    <img class="rounded-t card-image" [src]="pictureUrl" />
-    <span class="absolute top-0 right-0 m-2 text-yellow-800 bg-yellow-100 badge">-50% sale</span>
-    <div class="justify-between card-header"><span><h3 class="text-2xl">{{ name }}</h3></span> <span><b><strong>{{ price }} {{ currency }}</strong></b></span></div>
-    <div class="card-body">
-        {{ description }}<br>
-    </div>
-    <div class="m-2">
-        <button class="btn btn-icon btn-lg btn-light">add to&nbsp;<span class="icon-[lucide--shopping-cart]"></span></button>
-    </div>
+<div class="card shop relative min-h-fit h-[40rem] max-h-full min-w-min w-fit max-w-96">
+  <a class="card__cover" href="/detail/{{ number }}">
+    <img [src]="pictureUrl" alt="product Url"
+         class="hover:filter hover:brightness-95 transition rounded-t card-image max-h-[24rem]"/>
+  </a>
+  <span
+    class="absolute top-0 right-0 m-2 text-yellow-800 bg-yellow-100 badge">-{{ Math.floor(Math.random() * (100 - 10) + 10) }}
+    % sale</span>
+  <div class="justify-between card-header">
+    <a class="hover:underline" href="/detail/{{ number }}"><span><h3 class="text-2xl">{{ name }}</h3></span></a>
+    <span><b><strong>{{ price }} {{ currency }}</strong></b></span></div>
+  <div class="card-body overflow-auto">
+    <span *ngIf="description">{{ description }}</span>
+    <span *ngIf="!description"><em>no description</em></span>
+  </div>
+  <div class="m-2">
+    <button (click)="onAddToCart()" class="btn btn-icon btn-lg btn-light">add to&nbsp;<span
+      class="icon-[lucide--shopping-cart]"></span></button>
+  </div>
 </div>
