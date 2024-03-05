@@ -1,0 +1,80 @@
+<form [formGroup]="saveForm" class="w-full">
+  <div class="flex flex-col gap-4">
+    <div>
+      <label class="block text-sm mb-1" for="name">Name</label>
+      <input type="text" class="form-input" placeholder="" id="name" name="name" formControlName="name" required>
+      <span *ngIf="saveForm.get('name')?.touched && !saveForm.get('name')?.valid" class="form-text text-muted">You must enter a valid name!</span>
+    </div>
+
+    <div class="flex gap-2">
+      <div class="flex-grow">
+        <label class="block text-sm mb-1" for="card">Card</label>
+        <input type="text" class="form-input" placeholder="" id="card" name="card" formControlName="card" required>
+        <span *ngIf="saveForm.get('card')?.touched && !saveForm.get('card')?.valid" class="form-text text-muted">You must enter a valid card!</span>
+      </div>
+
+      <div class="flex-shrink">
+        <label class="block text-sm mb-1" for="expirationDate">Expiration Date</label>
+        <input type="text" class="form-input" placeholder="" id="expirationDate" name="expirationDate"
+               formControlName="expirationDate" required>
+        <span *ngIf="saveForm.get('expirationDate')?.touched && !saveForm.get('expirationDate')?.valid"
+              class="form-text text-muted">You must enter a valid expiration date!</span>
+      </div>
+    </div>
+
+    <div class="flex gap-2">
+      <div class="flex-grow">
+        <label class="block text-sm mb-1" for="street">Street</label>
+        <input type="text" class="form-input" placeholder="" id="street" name="street" formControlName="street"
+               required>
+        <span *ngIf="saveForm.get('street')?.touched && !saveForm.get('street')?.valid" class="form-text text-muted">You must enter a valid street!</span>
+      </div>
+
+      <div class="flex-shrink">
+        <label class="block text-sm mb-1" for="houseNumber">House Number</label>
+        <input type="text" class="form-input" placeholder="" id="houseNumber" name="houseNumber"
+               formControlName="houseNumber" required>
+        <span *ngIf="saveForm.get('houseNumber')?.touched && !saveForm.get('houseNumber')?.valid"
+              class="form-text text-muted">You must enter a valid house number!</span>
+      </div>
+    </div>
+
+    <div class="flex gap-2">
+      <div class="flex-grow">
+        <label class="block text-sm mb-1" for="city">City</label>
+        <input type="text" class="form-input" placeholder="" id="city" name="city" formControlName="city" required>
+        <span *ngIf="saveForm.get('city')?.touched && !saveForm.get('city')?.valid" class="form-text text-muted">You must enter a valid city!</span>
+      </div>
+
+      <div class="flex-shrink">
+        <label class="block text-sm mb-1" for="zipCode">Zip Code</label>
+        <input type="text" class="form-input" placeholder="" id="zipCode" name="zipCode" formControlName="zipCode"
+               required>
+        <span *ngIf="saveForm.get('zipCode')?.touched && !saveForm.get('zipCode')?.valid" class="form-text text-muted">You must enter a valid zip code!</span>
+      </div>
+
+      <div class="flex-shrink">
+        <label class="block text-sm mb-1" for="countryCode">Country Code</label>
+        <input type="text" class="form-input" placeholder="" id="countryCode" name="countryCode"
+               formControlName="countryCode" required>
+        <span *ngIf="saveForm.get('countryCode')?.touched && !saveForm.get('countryCode')?.valid"
+              class="form-text text-muted">You must enter a valid country code!</span>
+      </div>
+    </div>
+
+    <div class="flex gap-2">
+      <div class="flex-grow">
+        <label class="block text-sm mb-1" for="promoCode">Promo Code</label>
+        <input type="text" class="form-input" placeholder="" id="promoCode" name="promoCode" formControlName="promoCode"
+               required>
+        <span *ngIf="saveForm.get('promoCode')?.touched && !saveForm.get('promoCode')?.valid"
+              class="form-text text-muted">You must enter a valid promo code!</span>
+      </div>
+
+      <button type="submit" class="btn btn-primary w-full h-full self-end mt-4 border-primary border" value="pay"
+              (click)="onSend()" [disabled]="!saveForm.valid || shoppingCartService.getCartItems().length < 1">
+        Pay Now
+      </button>
+    </div>
+  </div>
+</form>

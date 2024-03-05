@@ -34,21 +34,6 @@ export class ShopItemServiceService {
     }
   `;
 
-  constructor() {
-  }
-
-  async getAllProducts(): Promise<any> {
-    try {
-      return await request(this.API_URL, this.API_QUERY_20);
-    } catch (error) {
-      console.error('Error fetching products:', error);
-    }
-  }
-
-  async getProductByFullId(full_id: string): Promise<any> {
-    return await request(this.API_URL, this.API_QUERY_1(full_id));
-  }
-
   private API_QUERY_1 = (full_id: string) => {
     return gql`
     {
@@ -64,4 +49,19 @@ export class ShopItemServiceService {
     }
   `;
   };
+
+  constructor() {
+  }
+
+  async getAllProducts(): Promise<any> {
+    try {
+      return await request(this.API_URL, this.API_QUERY_20);
+    } catch (error) {
+      console.error('Error fetching products:', error);
+    }
+  }
+
+  async getProductByFullId(full_id: string): Promise<any> {
+    return await request(this.API_URL, this.API_QUERY_1(full_id));
+  }
 }

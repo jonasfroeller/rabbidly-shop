@@ -13,7 +13,7 @@
     <span *ngIf="description">{{ description }}</span>
     <span *ngIf="!description"><em>no description</em></span>
   </div>
-  <div class="m-2">
+  <div *ngIf="controls" class="m-2">
     <button (click)="onAddToCart()" class="btn btn-icon btn-lg btn-light">add to&nbsp;<span
       class="icon-[lucide--shopping-cart]"></span></button>
   </div>

@@ -1,0 +1,40 @@
+<div class="container p-2 mx-auto">
+  <div class="flex flex-wrap justify-between">
+    <div class="px-4 flex-grow mb-24">
+      <div class="flex items-center gap-2">
+        <button class="my-2 btn btn-primary"
+                [disabled]="this.shoppingCartService.getCartItems().length < 1"
+                (click)="onClear()">
+          Clear
+        </button>
+
+        <h1 class="text-3xl">
+          Cart
+        </h1>
+      </div>
+
+      <ul class="list-group grid grid-cols-2 self-end gap-2 w-fit">
+        <li *ngFor="let product of this.shoppingCartService.getCartItems()"
+            class="list-group-item border border-primary flex flex-col gap-2 rounded p-2">
+          <app-shop-item
+            [currency]="product?.currency ?? null"
+            [description]="product?.description ?? null"
+            [id]="product?.id ?? null"
+            [name]="product?.name ?? null"
+            [pictureUrl]="product?.pictureUrl ?? null"
+            [price]="product?.price ?? null"
+            [controls]="false">
+          </app-shop-item>
+
+          <a class="mx-lg-3 btn btn-primary mx-auto" (click)="onRemoveCartItem(product?.id ?? -1)">Remove</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="px-4 max-w-full flex flex-col gap-8">
+      <app-shopping-cart-statistics [statistics]="this.shoppingCartService.getCartStatistics()">
+      </app-shopping-cart-statistics>
+      <app-address-form></app-address-form>
+    </div>
+  </div>
+</div>
